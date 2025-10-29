@@ -34,18 +34,18 @@ function PhoneMockup({ screenshot, className = '', delay = 0 }: { screenshot: st
   );
 }
 
-// Simple Two-Phone Layout - Like reference image
+// Simple Two-Phone Layout - Responsive
 function SimpleLayout({ screenshots }: { screenshots: string[] }) {
   return (
-    <div className="flex items-center justify-center gap-8 md:gap-12 px-4">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 px-4">
       <PhoneMockup 
         screenshot={screenshots[0]} 
-        className="w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
+        className="w-40 sm:w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
         delay={0}
       />
       <PhoneMockup 
         screenshot={screenshots[1]} 
-        className="w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
+        className="w-40 sm:w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
         delay={0.15}
       />
     </div>
@@ -80,21 +80,21 @@ export default function Projects() {
             viewport={{ once: true }}
             className="inline-block mb-4"
           >
-            <div className="flex items-center justify-center gap-3">
-              <Smartphone className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
-              <h2 className="text-5xl md:text-6xl font-bold font-poppins bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
+              <Smartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 dark:text-indigo-400" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                 Featured Projects
               </h2>
             </div>
           </motion.div>
-          <p className="text-xl font-inter text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl font-inter text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
             Full-stack mobile applications showcasing modern design, powerful functionality, and seamless user experiences
           </p>
         </motion.div>
       </div>
 
       {/* Projects List */}
-      <div className="space-y-40">
+      <div className="space-y-24 sm:space-y-32 lg:space-y-40">
         {projects.map((project, projectIndex) => {
           const screenshots = theme === 'light' ? project.screenshotsLight : project.screenshotsDark;
           const isEven = projectIndex % 2 === 0;
@@ -104,7 +104,7 @@ export default function Projects() {
               key={project.name}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-150px" }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
@@ -119,19 +119,19 @@ export default function Projects() {
               </div>
 
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className={`grid lg:grid-cols-2 gap-16 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                   {/* Screenshots - Simple & Clean */}
-                  <div className={`${!isEven ? 'lg:col-start-2' : ''} flex items-center justify-center py-8`}>
+                  <div className={`${!isEven ? 'lg:col-start-2' : ''} flex items-center justify-center py-4 sm:py-8`}>
                     {renderLayout(screenshots)}
                   </div>
 
                   {/* Project Details */}
                   <motion.div
-                    initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                    initial={{ opacity: 0, x: 0 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.7 }}
-                    className={`space-y-6 ${!isEven ? 'lg:col-start-1 lg:row-start-1' : ''}`}
+                    className={`space-y-4 sm:space-y-6 ${!isEven ? 'lg:col-start-1 lg:row-start-1' : ''}`}
                   >
                     {/* Category Badge */}
                     <motion.div 
@@ -147,12 +147,12 @@ export default function Projects() {
                     </motion.div>
 
                     {/* Project Name */}
-                    <h3 className={`text-5xl md:text-6xl font-bold font-poppins bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent leading-tight`}>
+                    <h3 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent leading-tight`}>
                       {project.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-inter leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 font-inter leading-relaxed">
                       {project.detailedDescription}
                     </p>
 
@@ -207,22 +207,22 @@ export default function Projects() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-4 pt-6">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
                       <motion.button
                         whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
                         whileTap={{ scale: 0.98 }}
-                        className={`flex-1 md:flex-none px-8 py-4 bg-gradient-to-r ${project.gradient} text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 text-lg`}
+                        className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r ${project.gradient} text-white font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg`}
                       >
-                        <ExternalLink className="w-5 h-5" />
-                        View Project
+                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>View Project</span>
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-bold rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-3 shadow-lg text-lg"
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-bold rounded-xl sm:rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg text-base sm:text-lg"
                       >
-                        <Github className="w-5 h-5" />
-                        Code
+                        <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>Code</span>
                       </motion.button>
                     </div>
                   </motion.div>
