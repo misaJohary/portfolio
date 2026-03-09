@@ -37,16 +37,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl font-bold text-primary cursor-pointer"
-            onClick={() => scrollToSection('home')}
-          >
-            Misa Razafimahatratra
-          </motion.div>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {['Home', 'About', 'Projects', 'Contact'].map((item, index) => (
@@ -56,7 +46,9 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
+                className={`transition-colors duration-200 font-medium ${
+                  scrolled ? 'text-secondary hover:text-primary' : 'text-white hover:text-white/70'
+                }`}
               >
                 {item}
               </motion.button>
@@ -69,13 +61,13 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-full bg-tertiary hover:bg-gray-300 transition-all duration-300"
+            className={`md:hidden p-2 rounded-full transition-all duration-300 ${scrolled ? 'bg-tertiary hover:bg-gray-300' : 'bg-white/10 hover:bg-white/20'}`}
             whileTap={{ scale: 0.9 }}
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-primary" />
+              <X className={`w-5 h-5 ${scrolled ? 'text-primary' : 'text-white'}`} />
             ) : (
-              <Menu className="w-5 h-5 text-primary" />
+              <Menu className={`w-5 h-5 ${scrolled ? 'text-primary' : 'text-white'}`} />
             )}
           </motion.button>
         </div>

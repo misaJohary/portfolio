@@ -5,10 +5,9 @@ import { Code2, Sparkles, Zap, Heart } from 'lucide-react';
 import { skills } from '@/data/skills';
 
 const stats = [
-  { label: 'Projects Completed', value: '15+', icon: Sparkles },
-  { label: 'Happy Clients', value: '10+', icon: Heart },
-  { label: 'Code Commits', value: '1000+', icon: Code2 },
-  { label: 'Coffee Cups', value: '∞', icon: Zap },
+  { label: 'Projects Completed', value: '10+', icon: Sparkles },
+  { label: 'Happy Clients', value: '7+', icon: Heart },
+  { label: 'Years of Experience', value: '4+', icon: Code2 },
 ];
 
 export default function About() {
@@ -66,14 +65,14 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          className="flex flex-wrap justify-center gap-4 mb-16"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               variants={item}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="relative group"
+              className="relative group w-40 sm:w-44"
             >
               <div className="absolute inset-0 bg-secondary/10 rounded-2xl blur group-hover:blur-xl transition-all"></div>
               <div className="relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-gray-200 text-center">

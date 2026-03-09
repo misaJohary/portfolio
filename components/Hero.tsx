@@ -18,34 +18,17 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Simple Gradient Background */}
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl"
+        <img
+          src="/background.png"
+          alt=""
+          className="w-full h-full object-cover object-center"
         />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl"
-        />
+        {/* Dark overlay so text stays readable */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Main Content */}
@@ -66,8 +49,8 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="inline-block"
           >
-            <div className="px-4 py-2 bg-tertiary rounded-full border border-gray-200">
-              <span className="text-sm font-semibold text-secondary">
+            <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+              <span className="text-sm font-semibold text-white/90">
                 Full-Stack Mobile Developer
               </span>
             </div>
@@ -79,7 +62,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight leading-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-tight">
               Hi, I'm Misa
             </h1>
           </motion.div>
@@ -89,11 +72,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl lg:text-3xl text-secondary max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-white/80 max-w-3xl mx-auto leading-relaxed"
           >
             I build elegant mobile applications with{' '}
-            <span className="text-primary font-semibold">Flutter</span> and{' '}
-            <span className="text-primary font-semibold">FastAPI</span>
+            <span className="text-white font-semibold">Flutter</span> and{' '}
+            <span className="text-white font-semibold">FastAPI</span>
           </motion.p>
 
           {/* CTA Button */}
@@ -121,13 +104,13 @@ export default function Hero() {
             className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12"
           >
             {[
-              { value: '15+', label: 'Projects' },
-              { value: '5+', label: 'Years' },
-              { value: '10+', label: 'Clients' },
+              { value: '10+', label: 'Projects' },
+              { value: '4+', label: 'Years' },
+              { value: '7+', label: 'Clients' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</div>
-                <div className="text-sm md:text-base text-secondary mt-1">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
+                <div className="text-sm md:text-base text-white/70 mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -147,7 +130,7 @@ export default function Hero() {
           className="cursor-pointer"
           onClick={scrollToProjects}
         >
-          <ChevronDown className="w-8 h-8 text-secondary" />
+          <ChevronDown className="w-8 h-8 text-white/60" />
         </motion.div>
       </motion.div>
     </section>
