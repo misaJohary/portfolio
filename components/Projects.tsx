@@ -36,13 +36,13 @@ function PhoneMockup({ screenshot, className = '', delay = 0 }: { screenshot: st
 function SimpleLayout({ screenshots }: { screenshots: string[] }) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 px-4">
-      <PhoneMockup 
-        screenshot={screenshots[0]} 
+      <PhoneMockup
+        screenshot={screenshots[0]}
         className="w-40 sm:w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
         delay={0}
       />
-      <PhoneMockup 
-        screenshot={screenshots[1]} 
+      <PhoneMockup
+        screenshot={screenshots[1]}
         className="w-40 sm:w-48 md:w-56 lg:w-64 transform hover:scale-105 transition-transform duration-300"
         delay={0.15}
       />
@@ -50,11 +50,41 @@ function SimpleLayout({ screenshots }: { screenshots: string[] }) {
   );
 }
 
-export default function Projects() {
-  const renderLayout = (screenshots: string[]) => {
-    return <SimpleLayout screenshots={screenshots.slice(0, 2)} />;
-  };
+// Tablet Mockup
+function TabletMockup({ screenshot, className = '' }: { screenshot: string; className?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, type: "spring", stiffness: 80 }}
+      className={`relative group ${className}`}
+    >
+      <div className="absolute -inset-4 bg-gradient-to-b from-gray-300/20 via-gray-400/30 to-gray-500/40 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 rounded-[2rem]"></div>
+      <div className="relative bg-white rounded-[1.5rem] overflow-hidden shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] group-hover:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.4)] transition-all duration-500 aspect-[1280/860]">
+        <img
+          src={screenshot}
+          alt="App screenshot"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+    </motion.div>
+  );
+}
 
+function TabletLayout({ screenshots }: { screenshots: string[] }) {
+  return (
+    <div className="flex items-center justify-center px-4">
+      <TabletMockup
+        screenshot={screenshots[0]}
+        className="w-full transform hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  );
+}
+
+export default function Projects() {
   return (
     <section
       id="projects"
@@ -92,6 +122,9 @@ export default function Projects() {
         {projects.map((project, projectIndex) => {
           const screenshots = project.screenshotsLight; // Always use light screenshots
           const isEven = projectIndex % 2 === 0;
+          const renderLayout = () => project.layout === 'hero'
+            ? <TabletLayout screenshots={screenshots} />
+            : <SimpleLayout screenshots={screenshots.slice(0, 2)} />;
 
           return (
             <motion.div
@@ -116,7 +149,7 @@ export default function Projects() {
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                   {/* Screenshots - Simple & Clean */}
                   <div className={`${!isEven ? 'lg:col-start-2' : ''} flex items-center justify-center py-4 sm:py-8`}>
-                    {renderLayout(screenshots)}
+                    {renderLayout()}
                   </div>
 
                   {/* Project Details */}

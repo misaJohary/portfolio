@@ -18,6 +18,55 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "TrustWork",
+    description: "Professional networking and collaboration platform.",
+    detailedDescription: "A modern professional networking platform connecting freelancers with clients. Features secure messaging, project management tools, and integrated payment systems.",
+    category: "Business",
+    tech: ["Flutter", "Firebase"],
+    features: [
+      "Professional profiles",
+      "Project management",
+      "Secure messaging",
+      "Payment integration"
+    ],
+    screenshotsLight: [
+      "/screenshots/trustwork/light-1.png",
+      "/screenshots/trustwork/light-2.png",
+      "/screenshots/trustwork/light-3.png"
+    ],
+    screenshotsDark: [
+      "/screenshots/trustwork/dark-1.png",
+      "/screenshots/trustwork/dark-2.png",
+      "/screenshots/trustwork/dark-3.png"
+    ],
+    gradient: "from-blue-400 via-blue-500 to-blue-600",
+    layout: "stacked",
+    requestSourceCode: true
+  },
+  {
+    name: "Farano",
+    description: "Game",
+    detailedDescription: "Mini two player games",
+    category: "Game",
+    tech: ["Flutter", "Firebase"],
+    features: [
+      "Mutliplayer game",
+      "Real-time game",
+      "Synchronisation features"
+    ],
+    screenshotsLight: [
+      "/screenshots/farano/light-1.png",
+      "/screenshots/farano/light-2.png"
+    ],
+    screenshotsDark: [
+      "/screenshots/farano/dark-1.png",
+      "/screenshots/farano/dark-2.png"
+    ],
+    gradient: "from-green-400 via-green-500 to-green-600",
+    layout: "grid",
+    requestSourceCode: true
+  },
+  {
     name: "Naveco Client",
     description: "Ride-hailing client app for booking and managing trips easily.",
     detailedDescription: "A comprehensive ride-hailing application that allows users to book rides, track drivers in real-time, and manage their trip history seamlessly. Built with Flutter for a native experience and Ruby for robust backend operations.",
@@ -30,14 +79,14 @@ export const projects: Project[] = [
       "Driver ratings & reviews"
     ],
     screenshotsLight: [
-      "https://images.unsplash.com/photo-1519003300449-424ad0405076?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&h=800&fit=crop"
+      "/screenshots/naveco-client/light-1.png",
+      "/screenshots/naveco-client/light-2.png"
     ],
     screenshotsDark: [
-      "https://images.unsplash.com/photo-1485395644833-0a1b1309a5d3?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&h=800&fit=crop"
+      "/screenshots/naveco-client/dark-1.png",
+      "/screenshots/naveco-client/dark-2.png"
     ],
-    gradient: "from-blue-500 via-indigo-500 to-purple-500",
+    gradient: "from-green-300 via-emerald-400 to-teal-400",
     layout: "floating",
     storeLinks: {
       android: "https://play.google.com/store/apps/details?id=com.naveco.client.v2&pcampaignid=web_share",
@@ -57,16 +106,16 @@ export const projects: Project[] = [
       "Performance analytics"
     ],
     screenshotsLight: [
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=800&fit=crop"
+      "/screenshots/naveco-driver/light-1.png",
+      "/screenshots/naveco-driver/light-2.png",
+      "/screenshots/naveco-driver/light-3.png"
     ],
     screenshotsDark: [
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1543286386-2e659306cd6c?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=800&fit=crop"
+      "/screenshots/naveco-driver/dark-1.png",
+      "/screenshots/naveco-driver/dark-2.png",
+      "/screenshots/naveco-driver/dark-3.png"
     ],
-    gradient: "from-purple-500 via-pink-500 to-rose-500",
+    gradient: "from-emerald-700 via-green-800 to-teal-900",
     layout: "cascade",
     storeLinks: {
       android: "https://play.google.com/store/apps/details?id=com.naveco.driver&hl=fr",
@@ -88,68 +137,19 @@ export const projects: Project[] = [
       "Prompt Engineering"
     ],
     screenshotsLight: [
-      "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=800&fit=crop"
+      "/screenshots/hellobible/light-1.png",
+      "/screenshots/hellobible/light-2.png"
     ],
     screenshotsDark: [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=800&fit=crop"
+      "/screenshots/hellobible/dark-1.png",
+      "/screenshots/hellobible/dark-2.png"
     ],
-    gradient: "from-blue-500 via-cyan-500 to-teal-500",
+    gradient: "from-orange-400 via-orange-500 to-amber-500",
     layout: "spotlight",
     storeLinks: {
       android: "https://play.google.com/store/search?q=hellobible&c=apps",
       ios: "https://apps.apple.com/us/app/hellobible-bible-chat/id6502768944"
     }
-  },
-  {
-    name: "TrustWork",
-    description: "Professional networking and collaboration platform.",
-    detailedDescription: "A modern professional networking platform connecting freelancers with clients. Features secure messaging, project management tools, and integrated payment systems.",
-    category: "Business",
-    tech: ["Flutter", "Firebase"],
-    features: [
-      "Professional profiles",
-      "Project management",
-      "Secure messaging",
-      "Payment integration"
-    ],
-    screenshotsLight: [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=800&fit=crop"
-    ],
-    screenshotsDark: [
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=800&fit=crop"
-    ],
-    gradient: "from-teal-500 via-emerald-500 to-green-500",
-    layout: "stacked",
-    requestSourceCode: true
-  },
-  {
-    name: "Farano",
-    description: "Game",
-    detailedDescription: "Mini two player games",
-    category: "Game",
-    tech: ["Flutter", "Firebase"],
-    features: [
-      "Mutliplayer game",
-      "Real-time game",
-      "Synchronisation features"
-    ],
-    screenshotsLight: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=800&fit=crop"
-    ],
-    screenshotsDark: [
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=800&fit=crop"
-    ],
-    gradient: "from-pink-500 via-rose-500 to-red-500",
-    layout: "grid",
-    requestSourceCode: true
   },
   {
     name: "Click Menu Zen",
@@ -164,14 +164,12 @@ export const projects: Project[] = [
       "Multi-language support"
     ],
     screenshotsLight: [
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=800&fit=crop"
+      "/screenshots/click-menu-zen/light-1.png"
     ],
     screenshotsDark: [
-      "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=400&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=800&fit=crop"
+      "/screenshots/click-menu-zen/dark-1.png"
     ],
-    gradient: "from-orange-500 via-amber-500 to-yellow-500",
+    gradient: "from-lime-300 via-green-400 to-emerald-400",
     layout: "hero",
     requestSourceCode: true
   }
