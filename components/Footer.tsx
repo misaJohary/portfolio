@@ -20,7 +20,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gray-900 dark:bg-black text-white py-12 transition-colors duration-500">
+    <footer className="relative bg-primary text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,10 +29,10 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-gray-400 font-inter mb-2">
+          <p className="text-gray-400 mb-2">
             Copyright © 2025 Misa Razafimahatratra
           </p>
-          <p className="text-gray-500 text-sm font-inter">
+          <p className="text-gray-500 text-sm">
             Built with Next.js, Tailwind CSS & Framer Motion
           </p>
         </motion.div>
@@ -45,7 +45,7 @@ export default function Footer() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+          className="fixed bottom-8 right-8 p-3 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 border-2 border-white"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -70,9 +70,9 @@ export default function Footer() {
           />
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#4f46e5" stopOpacity="0.2" />
-              <stop offset="50%" stopColor="#06b6d4" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#7B7B7B" stopOpacity="0.2" />
+              <stop offset="50%" stopColor="#7B7B7B" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#7B7B7B" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>
@@ -80,4 +80,3 @@ export default function Footer() {
     </footer>
   );
 }
-

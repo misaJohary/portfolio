@@ -9,15 +9,20 @@ export interface Project {
   screenshotsDark: string[];
   gradient: string;
   layout: 'stacked' | 'floating' | 'grid' | 'spotlight' | 'cascade' | 'hero';
+  storeLinks?: {
+    android?: string;
+    ios?: string;
+  };
+  requestSourceCode?: boolean;
 }
 
 export const projects: Project[] = [
   {
     name: "Naveco Client",
     description: "Ride-hailing client app for booking and managing trips easily.",
-    detailedDescription: "A comprehensive ride-hailing application that allows users to book rides, track drivers in real-time, and manage their trip history seamlessly. Built with Flutter for a native experience and FastAPI for robust backend operations.",
+    detailedDescription: "A comprehensive ride-hailing application that allows users to book rides, track drivers in real-time, and manage their trip history seamlessly. Built with Flutter for a native experience and Ruby for robust backend operations.",
     category: "Transportation",
-    tech: ["Flutter", "FastAPI", "Google Maps", "Firebase"],
+    tech: ["Flutter", "Ruby", "Google Maps", "Firebase"],
     features: [
       "Real-time ride tracking",
       "Multiple payment options",
@@ -33,14 +38,18 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&h=800&fit=crop"
     ],
     gradient: "from-blue-500 via-indigo-500 to-purple-500",
-    layout: "floating"
+    layout: "floating",
+    storeLinks: {
+      android: "https://play.google.com/store/apps/details?id=com.naveco.client.v2&pcampaignid=web_share",
+      ios: "https://apps.apple.com/fr/app/naveco-vtc-chauffeur-priv%C3%A9/id968439652"
+    }
   },
   {
     name: "Naveco Driver",
     description: "Driver companion app for managing rides and earnings.",
     detailedDescription: "Professional driver application with earnings tracking, navigation assistance, and ride management. Designed to maximize driver efficiency with intuitive controls and real-time updates.",
     category: "Transportation",
-    tech: ["Flutter", "FastAPI", "SQLModel", "GraphQL"],
+    tech: ["Flutter", "Ruby", "SQLModel", "GraphQL"],
     features: [
       "Earnings dashboard",
       "Navigation integration",
@@ -58,19 +67,25 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=800&fit=crop"
     ],
     gradient: "from-purple-500 via-pink-500 to-rose-500",
-    layout: "cascade"
+    layout: "cascade",
+    storeLinks: {
+      android: "https://play.google.com/store/apps/details?id=com.naveco.driver&hl=fr",
+      ios: "https://apps.apple.com/fr/app/naveco-driver/id1387842624"
+    }
   },
   {
     name: "HelloBible",
     description: "Inspirational Christian content and daily verses.",
     detailedDescription: "A spiritual companion app delivering daily Bible verses, devotionals, and inspirational content. Features include reading plans, bookmarks, and a beautiful, distraction-free reading experience.",
     category: "Lifestyle",
-    tech: ["Flutter", "FastAPI", "Firebase", "REST API"],
+    tech: ["Flutter", "NodeJs", "Firebase", "REST API", "OpenAI API", "Python", "LLM", "Prompt"],
     features: [
       "Daily verses & devotionals",
       "Reading plans",
       "Bookmark & notes",
-      "Audio Bible readings"
+      "Audio Bible readings",
+      "AI Chat",
+      "Prompt Engineering"
     ],
     screenshotsLight: [
       "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=400&h=800&fit=crop",
@@ -81,14 +96,18 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=800&fit=crop"
     ],
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
-    layout: "spotlight"
+    layout: "spotlight",
+    storeLinks: {
+      android: "https://play.google.com/store/search?q=hellobible&c=apps",
+      ios: "https://apps.apple.com/us/app/hellobible-bible-chat/id6502768944"
+    }
   },
   {
     name: "TrustWork",
     description: "Professional networking and collaboration platform.",
     detailedDescription: "A modern professional networking platform connecting freelancers with clients. Features secure messaging, project management tools, and integrated payment systems.",
     category: "Business",
-    tech: ["Flutter", "FastAPI", "GraphQL", "PostgreSQL"],
+    tech: ["Flutter", "Firebase"],
     features: [
       "Professional profiles",
       "Project management",
@@ -106,19 +125,19 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=800&fit=crop"
     ],
     gradient: "from-teal-500 via-emerald-500 to-green-500",
-    layout: "stacked"
+    layout: "stacked",
+    requestSourceCode: true
   },
   {
     name: "Farano",
-    description: "Marketplace for local handmade products.",
-    detailedDescription: "An artisan marketplace celebrating local craftsmanship. Connect makers with buyers, featuring secure transactions, product showcases, and community-driven discovery.",
-    category: "E-Commerce",
-    tech: ["Flutter", "FastAPI", "Stripe", "Firebase"],
+    description: "Game",
+    detailedDescription: "Mini two player games",
+    category: "Game",
+    tech: ["Flutter", "Firebase"],
     features: [
-      "Artisan profiles",
-      "Product listings",
-      "Secure payments",
-      "Order tracking"
+      "Mutliplayer game",
+      "Real-time game",
+      "Synchronisation features"
     ],
     screenshotsLight: [
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=800&fit=crop",
@@ -129,7 +148,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=800&fit=crop"
     ],
     gradient: "from-pink-500 via-rose-500 to-red-500",
-    layout: "grid"
+    layout: "grid",
+    requestSourceCode: true
   },
   {
     name: "Click Menu Zen",
@@ -152,7 +172,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=800&fit=crop"
     ],
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    layout: "hero"
+    layout: "hero",
+    requestSourceCode: true
   }
 ];
 

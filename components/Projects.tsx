@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTheme } from '@/contexts/ThemeContext';
 import { projects } from '@/data/projects';
-import { Smartphone, Check, ExternalLink, Github } from 'lucide-react';
+import { Smartphone, Check, Code } from 'lucide-react';
 
-// Clean Screenshot Card - Just like the reference image
+// Clean Screenshot Card
 function PhoneMockup({ screenshot, className = '', delay = 0 }: { screenshot: string; className?: string; delay?: number }) {
   return (
     <motion.div
@@ -16,11 +15,10 @@ function PhoneMockup({ screenshot, className = '', delay = 0 }: { screenshot: st
       className={`relative group ${className}`}
     >
       {/* Soft Shadow */}
-      <div className="absolute -inset-4 bg-gradient-to-b from-gray-400/20 via-gray-500/30 to-gray-600/40 dark:from-gray-800/30 dark:via-gray-900/40 dark:to-black/50 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 rounded-[3rem]"></div>
+      <div className="absolute -inset-4 bg-gradient-to-b from-gray-300/20 via-gray-400/30 to-gray-500/40 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 rounded-[3rem]"></div>
       
       {/* Screenshot Container - Clean & Minimal */}
-      <div className="relative bg-white dark:bg-gray-900 rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] group-hover:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.4)] transition-all duration-500 aspect-[9/19.5]">
-        {/* Image */}
+      <div className="relative bg-white rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)] group-hover:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.4)] transition-all duration-500 aspect-[9/19.5]">
         <img
           src={screenshot}
           alt="App screenshot"
@@ -52,19 +50,15 @@ function SimpleLayout({ screenshots }: { screenshots: string[] }) {
   );
 }
 
-
 export default function Projects() {
-  const { theme } = useTheme();
-
   const renderLayout = (screenshots: string[]) => {
-    // Always use simple 2-phone layout like the reference image
     return <SimpleLayout screenshots={screenshots.slice(0, 2)} />;
   };
 
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-500 overflow-hidden"
+      className="py-20 bg-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <motion.div
@@ -81,13 +75,13 @@ export default function Projects() {
             className="inline-block mb-4"
           >
             <div className="flex items-center justify-center gap-2 sm:gap-3">
-              <Smartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 dark:text-indigo-400" />
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+              <Smartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
                 Featured Projects
               </h2>
             </div>
           </motion.div>
-          <p className="text-base sm:text-lg md:text-xl font-inter text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
+          <p className="text-base sm:text-lg md:text-xl text-secondary max-w-3xl mx-auto px-4">
             Full-stack mobile applications showcasing modern design, powerful functionality, and seamless user experiences
           </p>
         </motion.div>
@@ -96,7 +90,7 @@ export default function Projects() {
       {/* Projects List */}
       <div className="space-y-24 sm:space-y-32 lg:space-y-40">
         {projects.map((project, projectIndex) => {
-          const screenshots = theme === 'light' ? project.screenshotsLight : project.screenshotsDark;
+          const screenshots = project.screenshotsLight; // Always use light screenshots
           const isEven = projectIndex % 2 === 0;
 
           return (
@@ -114,7 +108,7 @@ export default function Projects() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  className={`absolute ${isEven ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r ${project.gradient} opacity-10 dark:opacity-5 blur-3xl rounded-full`}
+                  className={`absolute ${isEven ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r ${project.gradient} opacity-5 blur-3xl rounded-full`}
                 />
               </div>
 
@@ -138,28 +132,27 @@ export default function Projects() {
                       initial={{ scale: 0.8 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-tertiary backdrop-blur-md rounded-full border border-gray-200 shadow-lg"
                     >
                       <div className={`w-2.5 h-2.5 rounded-full bg-gradient-to-r ${project.gradient} animate-pulse`}></div>
-                      <span className="text-sm font-bold text-gray-700 dark:text-gray-300 tracking-wide">
+                      <span className="text-sm font-bold text-secondary tracking-wide">
                         {project.category}
                       </span>
                     </motion.div>
 
                     {/* Project Name */}
-                    <h3 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent leading-tight`}>
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
                       {project.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 font-inter leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary leading-relaxed">
                       {project.detailedDescription}
                     </p>
 
                     {/* Tech Stack */}
                     <div className="space-y-4">
-                      <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                        <div className={`h-0.5 w-8 bg-gradient-to-r ${project.gradient}`}></div>
+                      <h4 className="text-sm font-bold text-secondary uppercase tracking-widest">
                         Tech Stack
                       </h4>
                       <div className="flex flex-wrap gap-3">
@@ -171,7 +164,7 @@ export default function Projects() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.5 + index * 0.05 }}
                             whileHover={{ scale: 1.05, y: -2 }}
-                            className="px-5 py-2.5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 text-sm font-semibold text-gray-700 dark:text-gray-200 shadow-md hover:shadow-lg transition-all"
+                            className="px-5 py-2.5 bg-tertiary rounded-xl border border-gray-200 text-sm font-semibold text-primary shadow-md hover:shadow-lg transition-all"
                           >
                             {tech}
                           </motion.span>
@@ -181,8 +174,7 @@ export default function Projects() {
 
                     {/* Features */}
                     <div className="space-y-4">
-                      <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                        <div className={`h-0.5 w-8 bg-gradient-to-r ${project.gradient}`}></div>
+                      <h4 className="text-sm font-bold text-secondary uppercase tracking-widest">
                         Key Features
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -195,10 +187,10 @@ export default function Projects() {
                             transition={{ delay: 0.6 + index * 0.08 }}
                             className="flex items-start gap-3 group"
                           >
-                            <div className={`mt-0.5 p-1.5 rounded-lg bg-gradient-to-r ${project.gradient} group-hover:scale-110 transition-transform`}>
+                            <div className="mt-0.5 p-1.5 rounded-lg bg-primary group-hover:scale-110 transition-transform">
                               <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                             </div>
-                            <span className="text-base text-gray-600 dark:text-gray-300 font-inter leading-relaxed">
+                            <span className="text-base text-secondary leading-relaxed">
                               {feature}
                             </span>
                           </motion.div>
@@ -206,25 +198,56 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
-                      <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r ${project.gradient} text-white font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg`}
-                      >
-                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span>View Project</span>
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-bold rounded-xl sm:rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg text-base sm:text-lg"
-                      >
-                        <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span>Code</span>
-                      </motion.button>
-                    </div>
+                    {/* Source Code Request Button */}
+                    {project.requestSourceCode && (
+                      <div className="pt-4 sm:pt-6">
+                        <motion.a
+                          href={`mailto:razafimahatratramisa@gmail.com?subject=Source Code Request – ${project.name}&body=Hi,%0A%0AI'm interested in the source code for ${project.name}.%0A%0APlease let me know how we can proceed.%0A%0AThanks!`}
+                          whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
+                          whileTap={{ scale: 0.98 }}
+                          className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-300 text-primary font-bold rounded-xl sm:rounded-2xl hover:border-gray-400 transition-all shadow-lg text-base sm:text-lg"
+                        >
+                          <Code className="w-5 h-5 sm:w-6 sm:h-6" />
+                          <span>Ask for Source Code</span>
+                        </motion.a>
+                      </div>
+                    )}
+
+                    {/* Store Buttons */}
+                    {project.storeLinks && (
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
+                        {project.storeLinks.android && (
+                          <motion.a
+                            href={project.storeLinks.android}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg"
+                          >
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M3.18 23.76c.33.18.7.19 1.05.03l11.12-6.42-2.38-2.38-9.79 8.77zm-1.7-20.1C1.17 3.99 1 4.44 1 4.96v14.08c0 .52.17.97.48 1.3l.07.07 7.89-7.89v-.19L1.48 3.59l-.07.07zM19.37 10.3l-2.2-1.27-2.66 2.66 2.66 2.66 2.21-1.28c.63-.36.63-.95 0-1.32l-.01.05zM4.23.21L15.35 6.63l-2.38 2.38-8.74-8.8z"/>
+                            </svg>
+                            <span>Google Play</span>
+                          </motion.a>
+                        )}
+                        {project.storeLinks.ios && (
+                          <motion.a
+                            href={project.storeLinks.ios}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-gray-300 text-primary font-bold rounded-xl sm:rounded-2xl hover:border-gray-400 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg text-base sm:text-lg"
+                          >
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <span>App Store</span>
+                          </motion.a>
+                        )}
+                      </div>
+                    )}
                   </motion.div>
                 </div>
               </div>

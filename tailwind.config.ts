@@ -5,17 +5,17 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './data/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        primary: '#222222',
+        secondary: '#7B7B7B',
+        tertiary: '#F8F8F8',
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)', 'sans-serif'],
-        inter: ['var(--font-inter)', 'sans-serif'],
+        aeonik: ['Aeonik', 'sans-serif'],
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

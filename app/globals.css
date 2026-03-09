@@ -2,14 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Aeonik Font */
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://fonts.cdnfonts.com/s/85546/AeonikTRIAL-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://fonts.cdnfonts.com/s/85546/AeonikTRIAL-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('https://fonts.cdnfonts.com/s/85546/AeonikTRIAL-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -17,8 +32,9 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  font-family: 'Aeonik', sans-serif;
+  color: #222222;
+  background: #FFFFFF;
 }
 
 @layer utilities {
@@ -33,27 +49,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
+  background: #F8F8F8;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-indigo-500 to-cyan-500 rounded-full;
+  background: linear-gradient(to bottom, #7B7B7B, #222222);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply from-indigo-600 to-cyan-600;
-}
-
-/* Smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-/* Disable transitions for specific elements */
-.no-transition,
-.no-transition * {
-  transition: none !important;
+  background: #222222;
 }
 

@@ -18,34 +18,33 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-500"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
     >
       {/* Simple Gradient Background */}
       <div className="absolute inset-0">
-        {/* Single subtle gradient orb */}
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.15, 0.25, 0.15],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-indigo-500/20 to-purple-500/20 dark:from-indigo-500/10 dark:to-purple-500/10 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
             scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.15, 0.25, 0.15],
           }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/20 to-blue-500/20 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -67,8 +66,8 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="inline-block"
           >
-            <div className="px-4 py-2 bg-gray-100 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-800">
-              <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+            <div className="px-4 py-2 bg-tertiary rounded-full border border-gray-200">
+              <span className="text-sm font-semibold text-secondary">
                 Full-Stack Mobile Developer
               </span>
             </div>
@@ -80,11 +79,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold font-poppins text-gray-900 dark:text-white tracking-tight leading-tight">
-              Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Misa
-              </span>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight leading-tight">
+              Hi, I'm Misa
             </h1>
           </motion.div>
 
@@ -93,11 +89,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl lg:text-3xl font-poppins text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-secondary max-w-3xl mx-auto leading-relaxed"
           >
             I build elegant mobile applications with{' '}
-            <span className="text-gray-900 dark:text-white font-semibold">Flutter</span> and{' '}
-            <span className="text-gray-900 dark:text-white font-semibold">FastAPI</span>
+            <span className="text-primary font-semibold">Flutter</span> and{' '}
+            <span className="text-primary font-semibold">FastAPI</span>
           </motion.p>
 
           {/* CTA Button */}
@@ -105,51 +101,54 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="pt-8"
+            className="pt-4"
           >
             <motion.button
               onClick={scrollToProjects}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              className="px-8 py-4 bg-primary text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               View My Work
-              <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
             </motion.button>
           </motion.div>
 
-          {/* Simple Stats */}
+          {/* Stats */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="flex justify-center gap-12 pt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12"
           >
             {[
-              { number: '15+', label: 'Projects' },
-              { number: '5+', label: 'Years' },
-              { number: '10+', label: 'Clients' },
+              { value: '15+', label: 'Projects' },
+              { value: '5+', label: 'Years' },
+              { value: '10+', label: 'Clients' },
             ].map((stat, index) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl font-bold font-poppins text-gray-900 dark:text-white">
-                  {stat.number}
-                </div>
-                <div className="text-sm font-medium text-gray-500 dark:text-gray-500 mt-1">
-                  {stat.label}
-                </div>
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</div>
+                <div className="text-sm md:text-base text-secondary mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Minimal Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <ChevronDown className="w-6 h-6 text-gray-400 dark:text-gray-600" />
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="cursor-pointer"
+          onClick={scrollToProjects}
+        >
+          <ChevronDown className="w-8 h-8 text-secondary" />
+        </motion.div>
       </motion.div>
     </section>
   );
